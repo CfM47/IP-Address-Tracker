@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import SearchBar from './SearchBar'
 import Details from './Details'
 import Map from './Map'
@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 
 type Props = {}
 
-const DynamicMap = dynamic(() => import('./Map'))
 
 export default function IPAddress({}: Props) {
     const [IPAddress, setIPAddress] = useState('')
@@ -15,6 +14,8 @@ export default function IPAddress({}: Props) {
     const [timezone, setTimezone] = useState('')
     const [ISP, setISP] = useState('')
     const [coordinates, setCoordinates] = useState({lat:51.505, lng:-0.09})
+    
+    const DynamicMap = useMemo(() => dynamic(() => import('./Map'),{ssr: false}),[])
 
     const fetchLocation = (ipAddress = '') => {
         fetch(
