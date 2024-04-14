@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react'
 import SearchBar from './SearchBar'
 import Details from './Details'
 import Map from './Map'
+import dynamic from 'next/dynamic'
 
 type Props = {}
+
+const DynamicMap = dynamic(() => import('./Map'))
 
 export default function IPAddress({}: Props) {
     const [IPAddress, setIPAddress] = useState('')
@@ -32,7 +35,7 @@ export default function IPAddress({}: Props) {
         <div className="flex flex-col h-screen relative">
             <SearchBar setIPAddress={setIPAddress} fetchLocation={fetchLocation}></SearchBar>
             <Details ipAddress={IPAddress} location={location} timezone={timezone} isp={ISP}></Details>
-            <Map coordinates={coordinates}></Map>
+            <DynamicMap coordinates={coordinates}></DynamicMap>
         </div>
     )
 }
