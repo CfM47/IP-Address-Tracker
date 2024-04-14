@@ -3,7 +3,7 @@ import React from 'react'
 import 'leaflet/dist/leaflet.css'
 import {Marker, MapContainer, TileLayer} from 'react-leaflet'
 import markerIcon from "../images/icon-location.svg"
-import L from 'leaflet'
+import L, {LatLngExpression, LatLngTuple} from 'leaflet'
 
 
 type Props = {
@@ -26,9 +26,9 @@ export default function Map(props: Props) {
     const position = [props.coordinates.lat, props.coordinates.lng]
     
     return (
-        <MapContainer key={state.keyMap} center={position} className="w-full h-3/5 z-0" zoom={18}>
+        <MapContainer key={state.keyMap} center={[position[0], position[1]]} className="w-full h-3/5 z-0" zoom={18}>
             <TileLayer attribution="Google Maps" url="https://google.com/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}"/>
-            <Marker position={position} icon={marker} draggrable={false}></Marker>
+            <Marker position={[position[0], position[1]]} icon={marker} draggable={false}></Marker>
         </MapContainer>
     )
 }
