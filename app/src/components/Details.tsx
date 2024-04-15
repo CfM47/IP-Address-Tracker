@@ -13,14 +13,14 @@ export default function Details(props: Props) {
 
   function detail (title: string, value: string, index: number ){
     return(
-      <div className='md:border-r-2 w-full border-slate-300 flex flex-col gap-2 items-center' key={index}>
+      <div className='md:border-r-2 w-full border-slate-300 flex flex-col gap-2 items-center p-2 text-justify' key={index}>
         <p className='text-sm text-slate-400 font-semibold'>{title}</p>
-        <p className='md:text-2xl text-black font-bold'>{value}</p>
+        <p className=' text-black font-bold'>{value}</p>
       </div>
     )
   }
   return (
-    <div className='w-4/5 rounded-lg absolute top-52 md:top-56 left-10 md:left-40 bg-white z-10 flex flex-col md:flex-row container gap-4 md:gap-10 p-4 md:p-8'>
+    <div className='w-4/5 rounded-lg absolute top-[200px] bg-white z-[3] flex flex-col md:flex-row container p-4 md:p-8'>
       {stats.map((x, index)=> detail(x[0], x[1], index))}
     </div>
   )

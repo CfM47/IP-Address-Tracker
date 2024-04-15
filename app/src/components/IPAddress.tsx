@@ -32,10 +32,11 @@ export default function IPAddress({}: Props) {
     }
     useEffect(()=>fetchLocation(), [])
 
+    const details = [IPAddress, location, timezone, ISP]
+    
     return (
-        <div className="flex flex-col h-screen relative">
-            <SearchBar setIPAddress={setIPAddress} fetchLocation={fetchLocation}></SearchBar>
-            <Details ipAddress={IPAddress} location={location} timezone={timezone} isp={ISP}></Details>
+        <div className="flex flex-col h-screen">
+            <SearchBar details={details} setIPAddress={setIPAddress} fetchLocation={fetchLocation}></SearchBar>
             <DynamicMap coordinates={coordinates}></DynamicMap>
         </div>
     )
