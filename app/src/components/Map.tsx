@@ -26,7 +26,7 @@ export default function Map(props: Props) {
     const position = [props.coordinates.lat, props.coordinates.lng]
     
     return (
-        <MapContainer key={state.keyMap} center={[position[0], position[1]]} className="w-full h-full min-h-[500px] z-0" zoom={18}>
+        <MapContainer key={state.keyMap} center={[position[0], position[1]]} className="w-full h-full min-h-[700px] z-0" zoom={18}>
             <TileLayer attribution="Google Maps" url="https://google.com/maps/vt?lyrs=m@189&gl=cn&x={x}&y={y}&z={z}"/>
             <Marker position={[position[0], position[1]]} icon={marker} draggable={false}></Marker>
         </MapContainer>
